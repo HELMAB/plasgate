@@ -6,35 +6,29 @@ use GuzzleHttp\Client;
 
 class Plasgate
 {
+    public $token;
+    public $senderId;
+    public $base_url;
     public $client;
-
-    public $option;
-
-    public $end_point;
-
-    public $verify;
 
     public function __construct()
     {
-        $this->option = [
-            'gw-username' => config('plasgate.username'),
-            'gw-password' => config('plasgate.password'),
-            'gw-from' => config('plasgate.sender_name'),
-        ];
-        $this->end_point = config('plasgate.end_point');
-        $this->verify = config('plasgate.ssl_certificate');
+        $this->token = config('plasgate.token');
+        $this->senderId = config('plasgate.sender_id');
+        $this->base_url = config('plasgate.base_url');
         $this->client = new Client();
     }
 
-    public function send($gwTo, $gwText)
+    public function send($phone, $text)
     {
         try {
-            return $this->client->request('POST', $this->end_point, [
-                'form_params' => array_merge($this->option, [
-                    'gw-to' => $gwTo,
-                    'gw-text' => $gwText,
-                ]),
-                'verify' => $this->verify
+            $token = $this->token;
+            $senderID = $this->senderId;
+            $baseUrl = $this->base_url;
+            return $this->client->request("GET", "$baseUrl?token=$token&phone=$phone&senderID=$senderID&text=$text", [
+                "headers" => [
+                    "Content-Type" => "application/json"
+                ]
             ]);
         } catch (\Exception $exception) {
             return $exception;
