@@ -15,10 +15,30 @@ You can install the package via composer:
 composer require asorasoft/plasgate
 ```
 
-## Usage
+Then add ``PlasgateServiceProvider`` class into `config/app.php`
 
 ``` php
-// Usage description here
+return [
+    "providers" => [
+        Asorasoft\Plasgate\PlasgateServiceProvider:class,
+    ]
+];
+```
+
+## Usage
+You need to publish the configuration files via command
+
+``` bash
+php artisan vendor:publish --provider="Asorasoft\Plasgate\PlasgateServiceProvider"
+```
+
+Need to change ``plasgate.php`` configuration such as `token`, `sender_Id` and `base_ur`
+
+``` php
+use Asorasoft\Plasgate\Plasgate;
+
+$plasgate = new Plasgate();
+$response = $plasgate->send('phone', 'your_text_message'); // GuzzleHttp Response
 ```
 
 ### Testing
