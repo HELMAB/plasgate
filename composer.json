@@ -1,0 +1,54 @@
+{
+    "name": "asorasoft/plasgate",
+    "description": "A simple PHP package for Plasgate SMS provider",
+    "keywords": [
+        "asorasoft",
+        "plasgate"
+    ],
+    "homepage": "https://github.com/asorasoft/plasgate",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Mab Hel",
+            "email": "mabhelitc@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asorasoft\\Plasgate\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Asorasoft\\Plasgate\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asorasoft\\Plasgate\\PlasgateServiceProvider"
+            ],
+            "aliases": {
+                "Plasgate": "Asorasoft\\Plasgate\\PlasgateFacade"
+            }
+        }
+    }
+}
