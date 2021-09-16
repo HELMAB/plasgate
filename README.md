@@ -23,7 +23,7 @@ Then add ``PlasgateServiceProvider`` class into `config/app.php`
 ``` php
 return [
     "providers" => [
-        Asorasoft\Plasgate\PlasgateServiceProvider:class,
+        Asorasoft\Plasgate\PlasgateServiceProvider::class,
     ]
 ];
 ```
