@@ -35,7 +35,7 @@ You need to publish the configuration files via command
 php artisan vendor:publish --provider="Asorasoft\Plasgate\PlasgateServiceProvider"
 ```
 
-Need to change ``plasgate.php`` configuration such as `token`, `sender_Id` and `base_ur`
+Need to change ``plasgate.php`` configuration such as `token`, `sender_Id` and `base_url`
 
 ``` php
 use Asorasoft\Plasgate\Plasgate;

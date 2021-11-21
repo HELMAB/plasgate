@@ -14,7 +14,9 @@ class PlasgateServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('plasgate.php'),
-            ], 'config');
+                __DIR__ . '/../src/models' => app_path('Models'),
+                __DIR__ . '/../src/migrations' => database_path('migrations'),
+            ], 'laravel-plasgate');
         }
     }
 
